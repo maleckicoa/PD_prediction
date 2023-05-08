@@ -1,0 +1,11 @@
+pandas
+numpy
+statsmodels
+category_encoders
+matplotlib
+sklearn
+xgboost
+pickle
+fastapi
+uvicorn
+mangum
