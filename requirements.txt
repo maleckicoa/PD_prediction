@@ -1,10 +1,10 @@
-pandas
-numpy
-statsmodels
-category_encoders
-matplotlib
-sklearn
-xgboost
+numpy==1.19.5
+pandas==1.1.5
+category-encoders==2.6.0
+matplotlib==3.2.1
+scikit-learn==0.24.2
+statsmodels==0.12.2
+xgboost==1.5.2
 fastapi
 uvicorn
 mangum

@@ -89,11 +89,11 @@ def test_result(d):
     df_na_bin_woe = na_bin_WOE_test(d, df_nna, df_nna_bin, df_nna_bin_woe,  num_vars, woe_cols, lookup_table)
     X_test = df_na_bin_woe[woe_cols].values
     uuid = df_na_bin_woe.uuid.values.tolist()
-    try:
+    #try:
         y_pred_prob = grid_search.best_estimator_.predict_proba(X_test)[:, 1]
         test_set_result = pd.DataFrame({'UUID': uuid,'PD': y_pred_prob}).to_dict('list')
-    except:
-        test_set_result = "Insuffucient training data to provide probability of default OR Incorrect predictor variable specification"
+    #except:
+    #    test_set_result = "Insuffucient training data to provide probability of default OR Incorrect predictor variable specification"
 
 
     return test_set_result
