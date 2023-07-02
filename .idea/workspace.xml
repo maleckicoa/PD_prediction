@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="523156d2-5cdf-4972-af2a-c6b8e350fdf9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/curl.txt" beforeDir="false" afterPath="$PROJECT_DIR$/curl.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_nna.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_nna_bin.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_nna_bin_woe.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid_search.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lookup_table.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/num_vars.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/woe_cols.pickle" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +32,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "dev",
     "last_opened_file_path": "/home/aleksa/Documents/PD_prediction",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
