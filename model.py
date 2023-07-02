@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import pandas as pd
 import numpy as np
+import joblib
 from statsmodels.stats.proportion import proportions_ztest
 import category_encoders as ce
 import matplotlib.pyplot as plt
@@ -11,7 +12,7 @@ import xgboost as xgb
 from sklearn.model_selection import GridSearchCV
 import warnings
 warnings.filterwarnings('ignore')
-from sklearn.metrics import roc_auc_score, recall_score, precision_score, average_precision_score
+from sklearn.metrics import roc_auc_score, recall_score, precision_score,average_precision_score
 import random
 
 
@@ -43,7 +44,7 @@ def na_bin_WOE_test(df_na, df_nna, df_nna_bin, df_nna_bin_woe,  num_vars, woe_co
 
     for i in num_vars:
         df_na_bin[i] = df_na_bin[i].apply(lambda x: map_range(lookup_table,i,x) )
-    df_na_bin[df_na.columns[2:]] = df_na_bin[df_nna.columns[2:]].astype(str)
+    df_na_bin[df_na.columns[2:]] = df_na_bin[df_na.columns[2:]].astype(str)
 
     ##########################
 
@@ -62,38 +63,39 @@ def na_bin_WOE_test(df_na, df_nna, df_nna_bin, df_nna_bin_woe,  num_vars, woe_co
 
 
 # Deserialization
-with open("df_nna.pickle", "rb") as infile:
-    df_nna = pickle.load(infile)
+# break
 
-with open("df_nna_bin.pickle", "rb") as infile:
-    df_nna_bin = pickle.load(infile)
+with open("/home/aleksa/Documents/PD_prediction/df_nna.pkl", "rb") as infile:
+    df_nna = pd.read_pickle(infile)
 
-with open("df_nna_bin_woe.pickle", "rb") as infile:
-    df_nna_bin_woe = pickle.load(infile)
-
-with open("woe_cols.pickle", "rb") as infile:
-    woe_cols = pickle.load(infile)
-
-with open("lookup_table.pickle", "rb") as infile:
-    lookup_table = pickle.load(infile)
-
-with open("num_vars.pickle", "rb") as infile:
-    num_vars = pickle.load(infile)
+with open("/home/aleksa/Documents/PD_prediction/df_nna_bin.pkl", "rb") as infile:
+    df_nna_bin = pd.read_pickle(infile)
 
 
-with open("grid_search.pickle", "rb") as infile:
-    grid_search = pickle.load(infile)
+with open("/home/aleksa/Documents/PD_prediction/df_nna_bin_woe.pkl", "rb") as infile:
+    df_nna_bin_woe = pd.read_pickle(infile)
+
+with open("/home/aleksa/Documents/PD_prediction/lookup_table.pkl", "rb") as infile:
+    lookup_table = pd.read_pickle(infile)
+
+with open("/home/aleksa/Documents/PD_prediction/num_vars.pkl", "rb") as infile:
+    num_vars = pd.read_pickle(infile)
+
+with open("/home/aleksa/Documents/PD_prediction/woe_cols.pkl", "rb") as infile:
+    woe_cols = pd.read_pickle(infile)
+
+grid_search = joblib.load('/home/aleksa/Documents/PD_prediction/grid_search.pkl')
 
 
 def test_result(d):
     df_na_bin_woe = na_bin_WOE_test(d, df_nna, df_nna_bin, df_nna_bin_woe,  num_vars, woe_cols, lookup_table)
     X_test = df_na_bin_woe[woe_cols].values
     uuid = df_na_bin_woe.uuid.values.tolist()
-    #try:
-        y_pred_prob = grid_search.best_estimator_.predict_proba(X_test)[:, 1]
-        test_set_result = pd.DataFrame({'UUID': uuid,'PD': y_pred_prob}).to_dict('list')
+    #try
+    y_pred_prob = grid_search.best_estimator_.predict_proba(X_test)[:, 1]
+    test_set_result = pd.DataFrame({'UUID': uuid,'PD': y_pred_prob}).to_dict('list')
     #except:
-    #    test_set_result = "Insuffucient training data to provide probability of default OR Incorrect predictor variable specification"
+    #    test_set_result = "Insuffucient training data to provide probability of default OR Incorrect predicton variable specification"
 
 
     return test_set_result

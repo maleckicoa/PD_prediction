@@ -1,4 +1,4 @@
-# main.py
+#main.py
 from model import *
 from typing import Optional
 
@@ -6,10 +6,6 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 
-#import pandas as pd
-#import os
-#os.getcwd()
-#import
 
 class Item(BaseModel):
     uuid: Optional[str] = None
@@ -60,8 +56,9 @@ app = FastAPI()
 
 @app.post("/")
 async def create_item(item: Item):
-    #return item
     item_dict = item.dict()
     d = pd.Series(item_dict).to_frame().transpose()
     result = test_result(d)
-    return result
+    return {"result": result}
+
+
