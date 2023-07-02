@@ -65,26 +65,26 @@ def na_bin_WOE_test(df_na, df_nna, df_nna_bin, df_nna_bin_woe,  num_vars, woe_co
 # Deserialization
 # break
 
-with open("/home/aleksa/Documents/PD_prediction/df_nna.pkl", "rb") as infile:
+with open("./df_nna.pkl", "rb") as infile:
     df_nna = pd.read_pickle(infile)
 
-with open("/home/aleksa/Documents/PD_prediction/df_nna_bin.pkl", "rb") as infile:
+with open("./df_nna_bin.pkl", "rb") as infile:
     df_nna_bin = pd.read_pickle(infile)
 
 
-with open("/home/aleksa/Documents/PD_prediction/df_nna_bin_woe.pkl", "rb") as infile:
+with open("./df_nna_bin_woe.pkl", "rb") as infile:
     df_nna_bin_woe = pd.read_pickle(infile)
 
-with open("/home/aleksa/Documents/PD_prediction/lookup_table.pkl", "rb") as infile:
+with open("./lookup_table.pkl", "rb") as infile:
     lookup_table = pd.read_pickle(infile)
 
-with open("/home/aleksa/Documents/PD_prediction/num_vars.pkl", "rb") as infile:
+with open("./num_vars.pkl", "rb") as infile:
     num_vars = pd.read_pickle(infile)
 
-with open("/home/aleksa/Documents/PD_prediction/woe_cols.pkl", "rb") as infile:
+with open("./woe_cols.pkl", "rb") as infile:
     woe_cols = pd.read_pickle(infile)
 
-grid_search = joblib.load('/home/aleksa/Documents/PD_prediction/grid_search.pkl')
+grid_search = joblib.load('./grid_search.pkl')
 
 
 def test_result(d):
