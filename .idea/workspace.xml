@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="523156d2-5cdf-4972-af2a-c6b8e350fdf9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/PD_model_run.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PD_model_train.py" afterDir="false" />
+    <list default="true" id="523156d2-5cdf-4972-af2a-c6b8e350fdf9" name="Changes" comment="refactoring the whole code, before building a Docker image">
+      <change afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/PD Study-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/PD Study-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PD Study.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/PD Study.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_na_bin_woe.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_nna.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_nna_bin.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_nna_bin_woe.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid_search.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lookup_table.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/num_vars.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/woe_cols.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PD_model_run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PD_model_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/PD_model_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curl.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +48,16 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;refactoring&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/aleksa/Code/PD_prediction&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/aleksa/Code/PD_prediction/process_loan_data&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.PD_model_run">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/process_loan_data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main">
     <configuration name="PD_model_run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PD_prediction" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -78,7 +79,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="PD_model_train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PD_prediction" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -90,7 +91,49 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PD_model_train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PD_prediction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/process_loan_data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/process_loan_data/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PD_prediction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -122,9 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.PD_model_train" />
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.PD_model_run" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.main1" />
       </list>
     </recent_temporary>
   </component>
@@ -137,6 +182,15 @@
       <option name="presentableId" value="Default" />
       <updated>1688240784140</updated>
     </task>
+    <task id="LOCAL-00001" summary="refactoring the whole code, before building a Docker image">
+      <option name="closed" value="true" />
+      <created>1696713400874</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696713400874</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,5 +203,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactoring the whole code, before building a Docker image" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring the whole code, before building a Docker image" />
   </component>
 </project>

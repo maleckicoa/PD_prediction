@@ -1,13 +1,27 @@
-#main.py
-from model import *
-from typing import Optional
+#import pandas as pd
+#import numpy as np
+#import warnings
+#import random
+#import category_encoders as ce
+#import xgboost as xgb
+#from sklearn.model_selection import GridSearchCV
+#from sklearn.metrics import roc_auc_score, recall_score, precision_score, average_precision_score, confusion_matrix
+#import pickle
+#import json
 
-from fastapi import FastAPI
+import joblib
+from PD_model_train import TrainValTest, WoeEncode, Model
+mod = joblib.load('./mod.pkl')
+
+
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from pydantic import BaseModel
+import json
+from typing import List, Optional
 
+app = FastAPI()
 
-
-class Item(BaseModel):
+class LoanData(BaseModel):
     uuid: Optional[str] = None
     default: Optional[int] = None
     account_amount_added_12_24m: Optional[int] = None
@@ -52,13 +66,37 @@ class Item(BaseModel):
     time_hours: Optional[float] = None
     worst_status_active_inv: Optional[int] = None
 
-app = FastAPI()
-
 @app.post("/")
-async def create_item(item: Item):
-    item_dict = item.dict()
-    d = pd.Series(item_dict).to_frame().transpose()
-    result = test_result(d)
-    return {"result": result}
+async def loans_request(data: List[LoanData]):
+    try:
+        result = mod.predict(data)
+
+        return(result)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/loans_file/")
+async def loans_file(file: UploadFile):
+    try:
+        # Read the uploaded JSON file
+        json_data = await file.read()
+        loan_data_list = json.loads(json_data)
+
+        # Parse and validate each loan item using the LoanData Pydantic model
+        loan_data_objects = []
+        for item in loan_data_list:
+            loan_data_obj = LoanData(**item)
+            loan_data_objects.append(loan_data_obj)
+
+        result = mod.predict(loan_data_objects)
+
+        return result
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

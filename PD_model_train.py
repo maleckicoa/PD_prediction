@@ -127,7 +127,7 @@ class TrainValTest:
         """
 
         _df = pd.read_csv(path, sep=";")
-        _df = _df[~_df['default'].isna()]
+        _df = _df[~_df['default'].isna()]#.head(1000)
 
         _val_size = int(val_prop * len(_df))
         _test_size = int(test_prop * len(_df))
@@ -166,7 +166,7 @@ class Model:
     def __init__(self, dataset_path, train_prop, test_prop, grid):
 
         self.data = TrainValTest("./dataset.csv", 0.1, 0.1)
-        self.obj = WoeEncode(data.train)
+        self.obj = WoeEncode(self.data.train)
 
         _val_woe_x = self.obj.na_bin_WOE(self.data.val)
         _test_woe_x = self.obj.na_bin_WOE(self.data.test)
@@ -190,7 +190,7 @@ class Model:
                                         scoring='roc_auc')  # , roc_auc'
         self.grid_search.fit(self.train_X.values, self.train_y.values)
         print("Model is trained")
-        print("Best parameters found: ", grid_search.best_params_)
+        print("Best parameters found: ", self.grid_search.best_params_)
 
     def test_set_performance(self):
 
@@ -211,34 +211,40 @@ class Model:
 
         print(confusion_matrix(y_true, y_pred))
 
+
     def predict(self, loans_dict):
 
-        if type(loans_dict) == str:
-            with open(loans_dict, 'r') as json_file:
-                loans = json.load(json_file)
-        else:
-            loans = loans_dict
+        appended_data = []
+        for i in range(0,len(loans_dict)):
+            df = pd.DataFrame([loans_dict[i].dict()])
+            appended_data.append(df)
 
-        self.loan_frame = pd.DataFrame(loans)
+        dff = pd.concat(appended_data)
+        self.loan_frame = dff.reset_index(drop=True)
 
         loans_woe_x = self.obj.na_bin_WOE(self.loan_frame)
         loans_X = loans_woe_x[self.obj.woe_cols].values
 
         y_pred_prob = self.grid_search.best_estimator_.predict_proba(loans_X)[:, 1]
 
-        res = pd.DataFrame(
-            {'Load_ID': list(loans['uuid'].values()),
-             'Probability_of_Default': list(y_pred_prob), })
-        return res
+        loan_id = list(self.loan_frame['uuid'])
+        probability_of_default = list(y_pred_prob)
+        probability_of_default = [str(x) for x in probability_of_default]
 
+        res_dict = {key: value for key, value in zip(loan_id, probability_of_default)}
+        return res_dict
     def generate_loans(self, test_size=10, file_name="./loan.json"):
         random_loans = random.sample(range(1, len(self.data.test)), test_size)
-        test_dict = self.data.test.iloc[random_loans].to_dict()
-        with open(file_name, 'w') as json_file:
-            json.dump(test_dict, json_file, indent=4)
+        test_dict = self.data.test.iloc[random_loans]  # .to_dict()
+        # print(test_dict)
+
+        with open(file_name, 'w') as file:
+            test_dict.to_json(file, orient='records', indent=4)
+
 
 
 if __name__ == '__main__':
+
     param_grid = {
         'learning_rate': [0.01],
         'max_depth': [8, 9, 10],
@@ -249,5 +255,5 @@ if __name__ == '__main__':
         # 'reg_lambda': [0.1, 0.5],
     }
 
-    mod = Model("./dataset.csv", 0.1, 0.1, param_grid)
-    joblib.dump(mod, './mod.pkl')
+    mod_dump = Model("./dataset.csv", 0.1, 0.1, param_grid)
+    joblib.dump(mod_dump, './mod.pkl')
