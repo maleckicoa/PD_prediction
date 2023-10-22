@@ -24,5 +24,5 @@ docker exec -it <container ID> sh
 PUSH IMAGE TO DOCKER HUB
 docker login
 docker tag pd_pred:latest maleckicoa/pd_pred:latest
-docker push malckicoa/pd_pred:latest
+docker push maleckicoa/pd_pred:latest
 

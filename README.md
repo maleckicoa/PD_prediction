@@ -1,6 +1,6 @@
 What is the application about?
 
-malekicoa/pd_pred is a Dockerized application that returns the probability of default for a set of given loans
+maleckicoa/pd_pred is a Dockerized application that returns the probability of default for a set of given loans
 The application is based on a real dataset from one large European fintech company (see: dataset.csv).
 
 
@@ -21,7 +21,7 @@ How to use the pd_pred application?
 
 How does the application work?
 
-The pd_pred application consists of 2 python scripts.
+The maleckicoa/pd_pred application consists of 2 python scripts.
 
 The main.py script imports the PD_model_train.py script and starts a FastAPI application.
 FastAPI application serves to receive loans information as curl POST requests and to return
@@ -37,7 +37,7 @@ At runtime the model object is imported and the FastAPI application passes the l
 to the model object, which in return provides the default probabilities. The model object can be re-trained,
 this is done by directly running the PD_model.train.py script as __main__.
 
-Useful Info
+Other Info:
 The repository also has a PD EDA & Model Run.ipynb jupyter notebook with the exploratory data analysis
 
 If the user wishes to make changes to the source code of the container, follow the steps:
@@ -45,9 +45,11 @@ If the user wishes to make changes to the source code of the container, follow t
 - start an existing maleckicoa/pd_pred image container (or run a new container)
 - copy the container files into the local folder "docker cp <container ID>: /usr/src/app/. /my_local_directory"
 - close the container
-- run the pd_pred_image (this will make a new container) and attach volumes to the local folder
- "docker run -v /my_local_directory:/usr/src/app malckicoa/pd_pred"
+- run the maleckicoa/pd_pred_image (this will make a new container) and attach volumes to the local folder
+ "docker run -v /my_local_directory:/usr/src/app maleckicoa/pd_pred"
 - you can now make changes to the source code in your local directory. The changes will be reflected in
   this particular container, even if you stop it and start it again.
+
+See the Useful_Docker_Commands.txt file for easier interaction with Docker
 
 

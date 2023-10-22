@@ -1,0 +1,2 @@
+curl -X POST "http://localhost:8000/loans_file/" -H "accept: application/json" -F "file=@loan20.json"
+
