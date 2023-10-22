@@ -32,12 +32,17 @@ The PD_model_train.py holds 3 classes which respectively:
 - encode the data subsets using Weight of Evidence encoding (WoeEncode)
 - train the XG-boost classifier and return probability od default (Model)
 
-Note that the model object is pretrained and serialized (mod.pkl file).
+Note that the model object in the image/container is pretrained and serialized (mod.pkl file).
 At runtime the model object is imported and the FastAPI application passes the loan information
 to the model object, which in return provides the default probabilities. The model object can be re-trained,
 this is done by directly running the PD_model.train.py script as __main__.
 
 Other Info:
+To run the application locally (without Docker), one needs to setup a Python environment and all the dependencies
+(requirements.txt). In addition, the model object (mod.pkl) needs to be generated, this is done by directly 
+running the PD_model.train.py script as __main__. After that, running the main.py will start the application
+
+
 The repository also has a PD EDA & Model Run.ipynb jupyter notebook with the exploratory data analysis
 
 If the user wishes to make changes to the source code of the container, follow the steps:
