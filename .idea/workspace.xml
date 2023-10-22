@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="523156d2-5cdf-4972-af2a-c6b8e350fdf9" name="Changes" comment="refactoring the whole code, before building a Docker image">
-      <change afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
+    <list default="true" id="523156d2-5cdf-4972-af2a-c6b8e350fdf9" name="Changes" comment="Docker image done. Just left to finish the README file">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Useful_Docker_Commands.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PD_model_run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/PD Study-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PD Study.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/PD_model_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/PD_model_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curl.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696713400874</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Docker image done. Just left to finish the README file">
+      <option name="closed" value="true" />
+      <created>1697660761848</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697660761848</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +212,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactoring the whole code, before building a Docker image" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring the whole code, before building a Docker image" />
+    <MESSAGE value="Docker image done. Just left to finish the README file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Docker image done. Just left to finish the README file" />
   </component>
 </project>

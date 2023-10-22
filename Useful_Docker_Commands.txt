@@ -1,0 +1,28 @@
+
+DELETE ALL CONTAINERS and IMAGE
+docker image list
+docker rm $(docker ps -a --filter "ancestor=<image ID>" -q)
+docker rmi <image ID>
+docker rm <container ID>
+
+BUILD THE IMAGE
+docker build -t pd_pred:latest .
+
+RUN THE IMAGE
+docker run -ti pd_pred
+
+COPY FILES FROM RUNNING CONTAINER INTO LOCAL FOLDER
+docker cp <container ID>:/usr/src/app/. /my_local_repository
+
+MAKE VOLUME
+docker run -v /my_local_repository:/usr/src/app pd_pred
+
+OPEN A RUNNING CONTAINER
+docker exec -it <container ID> sh
+
+
+PUSH IMAGE TO DOCKER HUB
+docker login
+docker tag pd_pred:latest maleckicoa/pd_pred:latest
+docker push malckicoa/pd_pred:latest
+
