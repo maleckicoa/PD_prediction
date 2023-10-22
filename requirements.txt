@@ -29,3 +29,4 @@ typing_extensions==4.7.0
 tzdata==2023.3
 uvicorn==0.22.0
 xgboost==1.7.6
+python-multipart==0.0.6
